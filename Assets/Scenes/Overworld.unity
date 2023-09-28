@@ -84459,10 +84459,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750497384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f256c38fb15b4f4ca7ad354be5ad53c, type: 3}
+  m_Script: {fileID: 11500000, guid: f54a24f13d63942a4866709cc733cfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  rb: {fileID: 1750497387}
+  inCaves: 0
+  ySpeed: 5
+  xSpeed: 5
+--- !u!50 &1750497387 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 412193027009803665, guid: 34448014912494d33b041af48acd0291,
+    type: 3}
+  m_PrefabInstance: {fileID: 1750497383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1825907749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281311786053241907, guid: 69c7343f050914c7787bbbe42c07b5b8,
