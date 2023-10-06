@@ -85048,6 +85048,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1750497385}
+    - targetCorrespondingSourceObject: {fileID: 412193027009803667, guid: 34448014912494d33b041af48acd0291,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750497388}
+    - targetCorrespondingSourceObject: {fileID: 412193027009803667, guid: 34448014912494d33b041af48acd0291,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750497391}
   m_SourcePrefab: {fileID: 100100000, guid: 34448014912494d33b041af48acd0291, type: 3}
 --- !u!1 &1750497384 stripped
 GameObject:
@@ -85071,18 +85079,42 @@ MonoBehaviour:
   inCaves: 0
   ySpeed: 5
   xSpeed: 5
-  coins: 0
-  health: 10
-  iframes: 0
-  coinsCollected: {fileID: 1601321691}
-  healthLeft: {fileID: 928731825}
-  sprite: {fileID: 1753756987}
 --- !u!50 &1750497387 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 412193027009803665, guid: 34448014912494d33b041af48acd0291,
     type: 3}
   m_PrefabInstance: {fileID: 1750497383}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1750497388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750497384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6816ec18b472474ab114f19935cfb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
+  coinsCollected: {fileID: 1601321691}
+--- !u!114 &1750497391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750497384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9dfc31b89ef4357aed87e32d23e438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  iframes: 0
+  healthLeft: {fileID: 928731825}
+  sprite: {fileID: 1753756987}
 --- !u!212 &1753756987 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 412193026774026815, guid: 34448014912494d33b041af48acd0291,
