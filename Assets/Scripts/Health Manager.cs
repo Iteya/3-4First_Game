@@ -27,26 +27,30 @@ public class HealthManager : MonoBehaviour
         if (iframes >= 0f)
         {
             iframes -= 1f * Time.deltaTime;
-            //StartCoroutine(InvincibleFlash)
+        }
+
+        if (iframes <= 0f)
+        {
+            sprite.color = Color.white;
         }
         
-        string HealthString = health.ToString();
-        healthLeft.text = "Health: " + HealthString;
+        string healthString = health.ToString();
+        healthLeft.text = "Health: " + healthString;
         
         if (health <= 0)
         {
             SceneManager.LoadScene("Start");
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag(("Spikes")))
+        if (other.CompareTag("Spikes"))
         {
-            TakeDamage(1, 5);
+            TakeDamage(1, 2);
         }
     }
-    
+
     public int TakeDamage(int amount, float time)
         {
             if (iframes <= 0f)
@@ -55,10 +59,6 @@ public class HealthManager : MonoBehaviour
                 iframes = time;
                 sprite.color = Color.red;
                 StartCoroutine(HitEffect());
-            }
-            else
-            {
-                iframes -= 0.2f;
             }
             
             return health;
@@ -70,16 +70,23 @@ public class HealthManager : MonoBehaviour
         {
             yield return new WaitForSeconds(.1f);
             sprite.color = Color.white;
+            StartCoroutine(InvincibleFlash());
         }
     }
-    
+
     IEnumerator InvincibleFlash()
     {
-        if (iframes > 0)
+        while (iframes >= 0f)
         {
-            var sectrets = sprite.color
-            //sprite.color = new Color(sprite.color, sprite.color, sprite.color, 1);
+            if (sprite.color == Color.white)
+            {
+                sprite.color = Color.clear;
+                yield return new WaitForSeconds(0.1f);
+            } else if (sprite.color == Color.clear)
+            {
+                sprite.color = Color.white;
+                yield return new WaitForSeconds(0.1f);
+            }
         }
-        
     }
 }
