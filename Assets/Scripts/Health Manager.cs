@@ -9,17 +9,15 @@ using static UnityEngine.SceneManagement.SceneManager;
 
 public class HealthManager : MonoBehaviour
 {
-    public int health = 10;
     public float iframes;
-    public TextMeshProUGUI healthLeft;
     public SpriteRenderer sprite;
+    public Hud hud;
     
     //awake
     
     private void Start()
     {
-        
-
+        hud = GameObject.FindObjectOfType<Hud>();
     }
 
     void Update()
@@ -34,10 +32,9 @@ public class HealthManager : MonoBehaviour
             sprite.color = Color.white;
         }
         
-        string healthString = health.ToString();
-        healthLeft.text = "Health: " + healthString;
         
-        if (health <= 0)
+        
+        if (hud.health <= 0)
         {
             SceneManager.LoadScene("Start");
         }
@@ -55,13 +52,13 @@ public class HealthManager : MonoBehaviour
         {
             if (iframes <= 0f)
             {
-                health -= amount;
+                hud.health -= amount;
                 iframes = time;
                 sprite.color = Color.red;
                 StartCoroutine(HitEffect());
             }
             
-            return health;
+            return hud.health;
         }
     
     IEnumerator HitEffect()

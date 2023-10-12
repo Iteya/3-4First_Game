@@ -9,20 +9,20 @@ using static UnityEngine.SceneManagement.SceneManager;
 
 public class CoinManager : MonoBehaviour
 {
-    public int coins;
-    public TextMeshProUGUI coinsCollected;
+    public Hud hud;
 
-    void Update()
+    private void Start()
     {
-        string CoinString = coins.ToString();
-        coinsCollected.text = "coins: " + CoinString;
+        hud = GameObject.FindObjectOfType<Hud>();
     }
+
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Coin"))
         {
-            coins += 1;
+            hud.coins += 1;
             other.gameObject.SetActive(false);
         }
     }

@@ -26,7 +26,6 @@ public class TurretAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             player = other.gameObject;
-            Debug.Log("HELLLLLLLLp");
             WillFire = true;
             StartCoroutine(FIREBALL());
         }
@@ -43,12 +42,11 @@ public class TurretAI : MonoBehaviour
 
     IEnumerator FIREBALL()
     {
-        if (WillFire == true)
+        while (WillFire)
         {
             yield return new WaitForSeconds(1f);
 
             Instantiate(fireball);
-            fireball.GetComponent<Rigidbody2D>().AddForce(new Vector2(player.transform.position.x, player.transform.position.y));
         }
     }
 }
