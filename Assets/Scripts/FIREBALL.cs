@@ -1,25 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class FIREBALL : MonoBehaviour
 {
-    private float playerX;
-    private float playerY;
     GameObject player;
     private Rigidbody2D rb;
+    public Vector2 playerPos;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerX = player.GetComponent<Transform>().transform.position.x;
-        playerY = player.GetComponent<Transform>().transform.position.y;
+        playerPos = player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject);
+        float step = 5 * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, playerPos, step);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
