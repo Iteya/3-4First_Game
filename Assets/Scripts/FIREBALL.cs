@@ -8,6 +8,7 @@ using UnityEngine.PlayerLoop;
 
 public class FIREBALL : MonoBehaviour
 {
+    public Animator animator;
     GameObject player;
     private Rigidbody2D rb;
     public Vector2 playerPos;
@@ -29,7 +30,7 @@ public class FIREBALL : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            animator.SetInteger("Explode", 1);
         }
     }
 }

@@ -9,10 +9,11 @@ public class TurretAI : MonoBehaviour
 
     public GameObject fireball;
     private bool WillFire = false;
+    private int a = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(FIREBALL());
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class TurretAI : MonoBehaviour
         {
             player = other.gameObject;
             WillFire = true;
-            StartCoroutine(FIREBALL());
+            
         }
         
     }
@@ -42,11 +43,15 @@ public class TurretAI : MonoBehaviour
 
     IEnumerator FIREBALL()
     {
-        while (WillFire)
+        while (a == 0)
         {
-            yield return new WaitForSeconds(1f);
+            if (WillFire == true)
+            {
+                yield return new WaitForSeconds(1f);
+                Instantiate(fireball);
+            }
 
-            Instantiate(fireball);
+            yield return null;
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4327165216284067482}
   - component: {fileID: -8488920319814256709}
   - component: {fileID: -4616548626820029721}
+  - component: {fileID: 8691153059932591111}
   m_Layer: 0
   m_Name: Turret_Projectile
   m_TagString: FIREBALL
@@ -161,4 +162,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39c8a6c6e075443383aa871a141de00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8691153059932591111}
   playerPos: {x: 0, y: 0}
+--- !u!95 &8691153059932591111
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790822057519619805}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62db36c82254849b08f8dcfa0ba6b82b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
