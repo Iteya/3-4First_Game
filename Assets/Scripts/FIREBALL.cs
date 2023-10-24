@@ -11,7 +11,10 @@ public class FIREBALL : MonoBehaviour
     public Animator animator;
     GameObject player;
     private Rigidbody2D rb;
+
     public Vector2 playerPos;
+
+    private bool collide = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +26,34 @@ public class FIREBALL : MonoBehaviour
     void Update()
     {
         float step = 5 * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, playerPos, step);
+        if (!collide)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, playerPos, step);
+        } else if (collide)
+        {
+            //Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+       
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("coding will kill you");
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetInteger("Explode", 1);
+            animator.SetInteger("Explode", 2);
+            collide = true;
+            destroySoon();
         }
+    }
+
+    IEnumerator destroySoon()
+    {
+        return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }
