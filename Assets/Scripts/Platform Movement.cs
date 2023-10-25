@@ -13,13 +13,25 @@ public class PlatformMovement : MonoBehaviour
     public bool inCaves;
     public int ySpeed;
     public int xSpeed;
+    private bool grounded = false;
 
     void Update()
     {
         if (inCaves)
         {
-            ySpeed = 0;
+            transform.Translate((Input.GetAxis("Horizontal") * xSpeed) * Time.deltaTime, 0, 0)
+            //if (grounded && pressing space)
+            //{
+                //rb.addForce((mathf.Max(0, Input.GetAxis("Vertical)) * ySpeed) * Time.deltaTime, ForceMode2D.Impulse)
+                //grounded = false
+            //}
+            //if (rb.Velocity == 0) 
+            //{
+                //grounded = true
+            //}
+        } else
+        {
+            transform.Translate((Input.GetAxis("Horizontal") * xSpeed ) * Time.deltaTime, (Input.GetAxis("Vertical") * ySpeed) * Time.deltaTime, 0);
         }
-        transform.Translate((Input.GetAxis("Horizontal")* xSpeed )*Time.deltaTime, (Input.GetAxis("Vertical") * ySpeed) * Time.deltaTime, 0);
     }
 }
