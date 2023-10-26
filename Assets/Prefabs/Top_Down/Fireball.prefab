@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: -3514862467880035125}
   - component: {fileID: 4327165216284067482}
   - component: {fileID: -8488920319814256709}
-  - component: {fileID: -4616548626820029721}
+  - component: {fileID: -9033573221574823934}
   - component: {fileID: 8691153059932591111}
   m_Layer: 0
-  m_Name: Turret_Projectile
-  m_TagString: Spikes
+  m_Name: Fireball
+  m_TagString: FIREBALL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-4616548626820029721
+--- !u!114 &-9033573221574823934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,10 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5790822057519619805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c39c8a6c6e075443383aa871a141de00, type: 3}
+  m_Script: {fileID: 11500000, guid: 1283e8de576ce47d8b0360836f5e27ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8691153059932591111}
+  animator: {fileID: 0}
   playerPos: {x: 0, y: 0}
 --- !u!95 &8691153059932591111
 Animator:

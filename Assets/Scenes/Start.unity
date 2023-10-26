@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 532849913}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3648,6 +3648,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5564746796056154358, guid: cddc0eae8679c4344b7e477729e7843b,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7386698514500486556, guid: cddc0eae8679c4344b7e477729e7843b,
         type: 3}
       propertyPath: m_Name
@@ -3698,6 +3703,9 @@ MonoBehaviour:
   inCaves: 1
   ySpeed: 5
   xSpeed: 5
+  facing: up
+  Position: {x: 0, y: 0}
+  Jumpstrength: 3
 --- !u!114 &1856841607
 MonoBehaviour:
   m_ObjectHideFlags: 0
