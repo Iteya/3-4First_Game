@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
+    public GameObject[] CoinArray;
     public int health;
     public int coins;
     

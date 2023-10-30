@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 using static UnityEngine.SceneManagement.SceneManager;
 
@@ -22,7 +23,12 @@ public class CoinManager : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
+            if (hud.CoinArray.Length == hud.coins)
+            {
+                Array.Resize(ref hud.CoinArray, hud.CoinArray.Length + 1);
+            }
             hud.coins += 1;
+            hud.CoinArray.AddRange(new GameObject[] {other.gameObject});
             other.gameObject.SetActive(false);
         }
     }

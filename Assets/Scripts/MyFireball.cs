@@ -35,7 +35,7 @@ public class MyFireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("coding will kill you");
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             animator.SetBool("Collision", true);
             collide = true;

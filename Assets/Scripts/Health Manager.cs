@@ -37,6 +37,8 @@ public class HealthManager : MonoBehaviour
         if (hud.health <= 0)
         {
             SceneManager.LoadScene("Start");
+            hud.health = 10;
+            hud.coins = 0;
         }
     }
 
