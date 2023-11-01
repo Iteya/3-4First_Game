@@ -23,12 +23,8 @@ public class CoinManager : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
-            if (hud.CoinArray.Length == hud.coins)
-            {
-                Array.Resize(ref hud.CoinArray, hud.CoinArray.Length + 1);
-            }
+            hud.coinData[other.gameObject.GetComponent<CoinID>().currentLevel][other.gameObject.GetComponent<CoinID>().id] = true;
             hud.coins += 1;
-            hud.CoinArray.AddRange(new GameObject[] {other.gameObject});
             other.gameObject.SetActive(false);
         }
     }

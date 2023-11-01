@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - FIREBALL
   - Ground
+  - DDOL
   layers:
   - Default
   - TransparentFX

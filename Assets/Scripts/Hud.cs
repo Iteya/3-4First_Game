@@ -7,9 +7,11 @@ using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
-    public GameObject[] CoinArray;
+    public bool[][] coinData;
     public int health;
     public int coins;
+    public int levelCount;
+    public int[] coinsPerLevel;
     
     public TextMeshProUGUI coinsCollected;
     public TextMeshProUGUI healthLeft;
@@ -28,12 +30,12 @@ public class Hud : MonoBehaviour
             hud = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        coinData = new bool[levelCount][];
+        for (int i = 0; i < levelCount; i++)
+        {
+            coinData[i] = new bool[coinsPerLevel[i]];
+        }
     }
 
     void Update()

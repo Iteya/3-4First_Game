@@ -42,7 +42,6 @@ public class FIREBALL : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("coding will kill you");
         if (other.gameObject.CompareTag("Player"))
         {
             animator.SetBool("Collision", true);
