@@ -16,12 +16,14 @@ public class PlatformMovement : MonoBehaviour
     private bool grounded = false;
     public string facing = "up";
     public Vector2 Position;
+    public Vector2 Target;
     public GameObject Fireball;
     [SerializeField] private float Jumpstrength;
 
     void Update()
     {
         Position = transform.position;
+        Target = Position;
         if (inCaves)
         {
             transform.Translate((Input.GetAxis("Horizontal") * xSpeed) * Time.deltaTime, 0, 0);
@@ -53,20 +55,24 @@ public class PlatformMovement : MonoBehaviour
         {
             if (facing == "right")
             {
-                Position.x += 3;
+                Position.x += 1;
                 Instantiate(Fireball, Position, transform.rotation);
+                Target.x = Position.x + 15;
             } else if (facing == "left")
             {
-                Position.x -= 3;
+                Position.x -= 1;
                 Instantiate(Fireball, Position, transform.rotation);
+                Target.x = Position.x - 15;
             } else if (facing == "up")
             {
-                Position.y += 3;
+                Position.y += 1;
                 Instantiate(Fireball, Position, transform.rotation);
+                Target.y = Position.y + 15;
             } else if (facing == "down")
             {
-                Position.y -= 3;
+                Position.y -= 1;
                 Instantiate(Fireball, Position, transform.rotation);
+                Target.y = Position.y - 15;
             }
         }
     }

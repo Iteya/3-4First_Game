@@ -14,27 +14,29 @@ public class MyFireball : MonoBehaviour
 
     private bool collide = false;
 
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        FuturePosition = player.GetComponent<PlatformMovement>().Target;
+    }
     // Update is called once per frame
     void Update()
     {
         float step = 5 * Time.deltaTime;
         if (!collide)
         {
-            //transform.position = Vector2.MoveTowards(transform.position, playerPos, step);
+            transform.position = Vector2.MoveTowards(transform.position, FuturePosition, step);
         }
 
         Vector2 Position = transform.position;
-        /*if (playerPos == Position)
+        if (Position == FuturePosition)
         {
-            animator.SetBool("Collision", true);
             StartCoroutine(DestroySoon());
-
-        }*/
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("coding will kill you");
         if (other.gameObject.CompareTag("Enemy"))
         {
             animator.SetBool("Collision", true);

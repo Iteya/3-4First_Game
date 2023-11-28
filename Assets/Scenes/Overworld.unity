@@ -85350,7 +85350,9 @@ MonoBehaviour:
   xSpeed: 5
   facing: up
   Position: {x: 0, y: 0}
-  Fireball: {fileID: 0}
+  Target: {x: 0, y: 0}
+  Fireball: {fileID: 5790822057519619805, guid: 29cccdfd9f6d44fa194079ad15920d10,
+    type: 3}
   Jumpstrength: 0
 --- !u!50 &1750497387 stripped
 Rigidbody2D:
@@ -85371,7 +85373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 0}
-  currentLevel: 0
 --- !u!114 &1750497391
 MonoBehaviour:
   m_ObjectHideFlags: 0
