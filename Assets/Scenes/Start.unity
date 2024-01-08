@@ -3718,8 +3718,8 @@ MonoBehaviour:
   inCaves: 1
   ySpeed: 5
   xSpeed: 5
-  facing: up
   Position: {x: 0, y: 0}
+  Target: {x: 0, y: 0}
   Fireball: {fileID: 0}
   Jumpstrength: 3
 --- !u!114 &1856841607

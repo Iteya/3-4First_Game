@@ -16,8 +16,7 @@ public class MyFireball : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        FuturePosition = player.GetComponent<PlatformMovement>().Target;
+        FuturePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
     // Update is called once per frame
     void Update()
@@ -47,6 +46,7 @@ public class MyFireball : MonoBehaviour
 
     IEnumerator DestroySoon()
     {
+        animator.SetBool("Collision", true);
         yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
     }
