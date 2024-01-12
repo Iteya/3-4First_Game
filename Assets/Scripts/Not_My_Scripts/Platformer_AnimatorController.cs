@@ -9,6 +9,16 @@ public class Platformer_Animator : MonoBehaviour
     Animator anim;
     SpriteRenderer sprite;
 
+    enum State
+    {
+        Idle,
+        Jumping,
+        Walking,
+        Attacking
+    }
+
+    private State state = State.Idle;
+
 
     private void Start()
     {
@@ -19,11 +29,56 @@ public class Platformer_Animator : MonoBehaviour
         anim.SetBool("IsWalking", false);
         anim.SetInteger("WalkDir", 1);
         sprite.flipX = true;
-
     }
 
     private void Update()
     {
+        if (state == State.Idle)
+        {
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                state = State.Walking;
+            } else if (Input.GetAxis("Vertical") > 0)
+            {
+                state = State.Jumping;
+            }
+
+            anim.SetBool("IsWalking", false);
+        }
+
+        if (state == State.Walking)
+        {
+            if (Input.GetAxis("Horizontal") == 0)
+            {
+                state = State.Idle;
+            } else if (Input.GetAxis("Vertical") > 0)
+            {
+                state = State.Jumping;
+            } else if (Input.GetMouseButton(0))
+            {
+                state = State.Attacking;
+            }
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                sprite.flipX = true;
+            }
+            else
+            {
+                sprite.flipX = false;
+            }
+            
+            anim.SetBool("IsWalking", true);
+        }
+
+        if (state == State.Jumping)
+        {
+            
+        }
+
+        if (state == State.Attacking)
+        {
+            
+        }
         if (Input.GetAxis("Horizontal") != 0)
         {
             anim.SetBool("IsWalking", true);
