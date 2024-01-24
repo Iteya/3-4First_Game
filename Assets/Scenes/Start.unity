@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 532849915}
   - component: {fileID: 532849914}
   - component: {fileID: 532849913}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Collision
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 627937288}
   - component: {fileID: 627937290}
   - component: {fileID: 627937289}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: No Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3726,7 +3726,11 @@ MonoBehaviour:
   Position: {x: 0, y: 0}
   Target: {x: 0, y: 0}
   Fireball: {fileID: 0}
-  Jumpstrength: 3
+  distance: 0.6
+  layer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  Jumpstrength: 0.2
 --- !u!114 &1856841607
 MonoBehaviour:
   m_ObjectHideFlags: 0
