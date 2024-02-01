@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hud : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Hud : MonoBehaviour
     public int coins;
     public int levelCount;
     public int[] coinsPerLevel;
+    public List<string> enemies;
+    public int idInt = 0;
     
     public TextMeshProUGUI coinsCollected;
     public TextMeshProUGUI healthLeft;

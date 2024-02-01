@@ -1,66 +1,72 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class OrcPathfinding : MonoBehaviour
 {
     public GameObject player;
+    public GameObject self;
+    public string myID;
     public Rigidbody2D rb;
     public bool dropsAxe;
     public bool aggro = false;
-    public bool cansee = false;
-    public int visionRange = 20;
-    public string direction;
     
-    // Start is called before the first frame update
+    public int health = 10;
+
+    private NavMeshAgent agent;
+    
     void Start()
     {
-        
+        myID = SceneManager.GetActiveScene().name + self.name;
+        if (Hud.hud.enemies.Contains(myID))
+        {
+            Destroy(self);
+        }
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.x < transform.position.x)
+        if (aggro)
         {
-            if (SimpleRay(rb, transform.TransformDirection(Vector3.left), visionRange))
-            {
-                direction = "left";
-            }
-        } else if (player.transform.position.x > transform.position.x)
-        {
-            if (SimpleRay(rb, transform.TransformDirection(Vector3.right), visionRange))
-            {
-                direction = "right";
-            }
+            agent.SetDestination(player.transform.position);
         }
-        if (player.transform.position.y < transform.position.y)
+
+        if (health <= 0)
         {
-            if (SimpleRay(rb, transform.TransformDirection(Vector3.left), visionRange))
-            {
-                direction = "down";
-            }
-        } else if (player.transform.position.y > transform.position.y)
-        {
-            if (SimpleRay(rb, transform.TransformDirection(Vector3.left), visionRange))
-            {
-                direction = "up†";
-            }
+            self.SetActive(false);
+            Hud.hud.enemies.Add(myID);
         }
-        
     }
 
-    private bool SimpleRay(Rigidbody2D rb, Vector3 direction, int range)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        RaycastHit hit;
-        if (Physics2D.Raycast(rb.position, direction, range))
+        if (other.CompareTag("Player"))
         {
-            return true;
-        }else
+            aggro = true;
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("Oh!");
+        if (other.gameObject.CompareTag("Player"))
         {
-            return false;
+            player.GetComponent<HealthManager>().TakeDamage(1, 2);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            aggro = false;
         }
     }
 }

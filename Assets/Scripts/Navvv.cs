@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +17,9 @@ public class Navvv : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        if (Vector2.Distance(target.position, transform.position) < 20)
+        {
+            agent.SetDestination(target.position);
+        }
     }
 }

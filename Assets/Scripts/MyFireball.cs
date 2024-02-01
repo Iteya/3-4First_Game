@@ -41,6 +41,7 @@ public class MyFireball : MonoBehaviour
             animator.SetBool("Collision", true);
             collide = true;
             StartCoroutine(DestroySoon());
+            other.GetComponent<OrcPathfinding>().health -= 1;
         }
     }
 

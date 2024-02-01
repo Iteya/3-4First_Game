@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class PlatformMovement : MonoBehaviour
 {
+    public Collider2D col;
     public Rigidbody2D rb;
     public bool inCaves;
     public int ySpeed;
@@ -31,11 +32,14 @@ public class PlatformMovement : MonoBehaviour
         {
             transform.Translate((Input.GetAxis("Horizontal") * xSpeed) * Time.deltaTime, 0, 0);
             RaycastHit hit;
-            if (Input.GetAxisRaw("Vertical") > 0.5 && (grounded || Physics2D.Raycast(transform.position, Vector2.down, distance, layer) == true))
+            if (Input.GetAxisRaw("Vertical") > 0.5 && (grounded || Physics2D.Raycast(rb.position, Vector2.down, col.bounds.extents.y - .1f, layer) == true))
             {
-                rb.AddForce(new Vector2(0, Mathf.Max(0, Input.GetAxisRaw("Vertical")) * ySpeed * Jumpstrength),
-                    ForceMode2D.Impulse);
-                grounded = false;
+                if (rb.velocity.y > -0.1f || 0.1f > rb.velocity.y)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, Jumpstrength);
+                    grounded = false;
+                }
+                
             }
         }
         else
