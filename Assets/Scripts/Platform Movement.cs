@@ -25,21 +25,17 @@ public class PlatformMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(Position, Vector2.down * distance, Color.blue, 0.5f);
+        Debug.DrawRay(rb.position, Vector2.down * (col.bounds.extents.y + .1f), Color.red);
         Position = transform.position;
         Target = Position;
         if (inCaves)
         {
             transform.Translate((Input.GetAxis("Horizontal") * xSpeed) * Time.deltaTime, 0, 0);
             RaycastHit hit;
-            if (Input.GetAxisRaw("Vertical") > 0.5 && (grounded || Physics2D.Raycast(rb.position, Vector2.down, col.bounds.extents.y - .1f, layer) == true))
+            if (Input.GetAxisRaw("Jump") != 0 && grounded)
             {
-                if (rb.velocity.y > -0.1f || 0.1f > rb.velocity.y)
-                {
                     rb.velocity = new Vector2(rb.velocity.x, Jumpstrength);
                     grounded = false;
-                }
-                
             }
         }
         else
@@ -57,7 +53,7 @@ public class PlatformMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (Physics2D.Raycast(rb.position, Vector2.down, col.bounds.extents.y + .1f, layer))
         {
             grounded = true;
         }
